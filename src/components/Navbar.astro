@@ -231,89 +231,102 @@ import '../styles/navbar.css'
 </header>
 
 <script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
-    
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', (!expanded).toString());
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
         
-        if (expanded) {
-          // Cerrar menú
-          mobileMenu.classList.add('closing');
-          (mobileMenu as HTMLElement).style.maxHeight = '0';
-          
-          setTimeout(() => {
-            mobileMenu.classList.remove('closing');
-            mobileMenu.classList.add('hidden');
-            // Cambiar icono a hamburguesa
-            menuButton.querySelector('i').classList.remove('fa-times');
-            menuButton.querySelector('i').classList.add('fa-bars');
-          }, 300);
-        } else {
-          // Abrir menú
-          mobileMenu.classList.remove('hidden');
-          setTimeout(() => {
-            (mobileMenu as HTMLElement).style.maxHeight = mobileMenu.scrollHeight + 'px';
-            // Cambiar icono a X
-            menuButton.querySelector('i').classList.remove('fa-bars');
-            menuButton.querySelector('i').classList.add('fa-times');
-          }, 10);
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', (!expanded).toString());
+                
+                if (expanded) {
+                    // Cerrar menú
+                    mobileMenu.classList.add('closing');
+                    mobileMenu.style.maxHeight = '0';
+                    
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('closing');
+                        mobileMenu.classList.add('hidden');
+                        // Cambiar icono a hamburguesa
+                        const icon = menuButton.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }, 300);
+                } else {
+                    // Abrir menú
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                        // Cambiar icono a X
+                        const icon = menuButton.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        }
+                    }, 10);
+                }
+            });
         }
-      });
-    }
-    
-    // Manejo de dropdowns en móvil
-    mobileDropdowns.forEach(dropdown => {
-      const button = dropdown.querySelector('button');
-      const content = dropdown.querySelector('.mobile-dropdown-content');
-      const icon = button.querySelector('.fa-chevron-down');
-      
-      button.addEventListener('click', () => {
-        const isOpen = content.classList.contains('active');
         
-        // Cerrar todos los otros dropdowns
-        document.querySelectorAll('.mobile-dropdown-content.active').forEach(openContent => {
-          if (openContent !== content) {
-            openContent.classList.remove('active');
-            (openContent as HTMLElement).style.maxHeight = '0';
-            const openIcon = openContent.previousElementSibling.querySelector('.fa-chevron-down');
-            (openIcon as HTMLElement).style.transform = 'rotate(0deg)';
-          }
+        // Manejo de dropdowns en móvil
+        mobileDropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('button');
+            const content = dropdown.querySelector<HTMLElement>('.mobile-dropdown-content');
+            const icon = button?.querySelector<HTMLElement>('.fa-chevron-down');
+            
+            if (button && content && icon) {
+                button.addEventListener('click', () => {
+                    const isOpen = content.classList.contains('active');
+                    
+                    // Cerrar todos los otros dropdowns
+                    document.querySelectorAll<HTMLElement>('.mobile-dropdown-content.active').forEach(openContent => {
+                        if (openContent !== content) {
+                            openContent.classList.remove('active');
+                            openContent.style.maxHeight = '0';
+                            const openIcon = openContent.previousElementSibling?.querySelector<HTMLElement>('.fa-chevron-down');
+                            if (openIcon) {
+                                openIcon.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                    
+                    if (isOpen) {
+                        // Cerrar este dropdown
+                        content.classList.remove('active');
+                        content.style.maxHeight = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        // Abrir este dropdown
+                        content.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            }
         });
         
-        if (isOpen) {
-          // Cerrar este dropdown
-          content.classList.remove('active');
-          (content as HTMLElement).style.maxHeight = '0';
-          (icon as HTMLElement).style.transform = 'rotate(0deg)';
-        } else {
-          // Abrir este dropdown
-          content.classList.add('active');
-          (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
-          (icon as HTMLElement).style.transform = 'rotate(180deg)';
-        }
-      });
+        // Ajustar altura del menú móvil al cambiar tamaño de ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) { // lg breakpoint
+                // Resetear menú móvil en desktop
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.style.maxHeight = '0';
+                    if (menuButton) {
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        const icon = menuButton.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                }
+            }
+        });
     });
-    
-    // Ajustar altura del menú móvil al cambiar tamaño de ventana
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) { // lg breakpoint
-        // Resetear menú móvil en desktop
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          (mobileMenu as HTMLElement).style.maxHeight = '0';
-          if (menuButton) {
-            menuButton.setAttribute('aria-expanded', 'false');
-            menuButton.querySelector('i').classList.remove('fa-times');
-            menuButton.querySelector('i').classList.add('fa-bars');
-          }
-        }
-      }
-    });
-  });
 </script>

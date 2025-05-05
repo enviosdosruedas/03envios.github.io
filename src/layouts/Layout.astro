@@ -28,6 +28,7 @@ const {
             canonicalUrl={canonicalUrl}
             image={image}
         >
+            <slot name="head" />
             <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
         </Head>

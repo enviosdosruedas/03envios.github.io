@@ -1,6 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
+import lineClamp from '@tailwindcss/line-clamp';
+import aspectRatio from '@tailwindcss/aspect-ratio';
+
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -11,15 +19,23 @@ export default {
         'gold': '#ffd500',
       },
       fontFamily: {
-        sans: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif'],
+        sans: [
+          'Inter',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial Nova',
+          'Nimbus Sans',
+          'Arial',
+          'sans-serif',
+        ],
       },
       boxShadow: {
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        card: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        hover: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
       animation: {
-        'shine': 'shine 1.5s infinite linear',
-        'float': 'float 3s ease-in-out infinite',
+        shine: 'shine 1.5s infinite linear',
+        float: 'float 3s ease-in-out infinite',
       },
       keyframes: {
         shine: {
@@ -33,5 +49,11 @@ export default {
       },
     },
   },
-  plugins: [],
-}
+
+  plugins: [
+    forms,
+    typography,
+    lineClamp,
+    aspectRatio,
+  ],
+};

@@ -1,11 +1,9 @@
 ---
 const currentYear = new Date().getFullYear();
 // Add Swiper type declaration
-declare global {
-  interface Window {
-    Swiper: typeof import('swiper').default;
-  }
-}
+declare const Swiper: {
+  new (selector: string, options: any): any;
+};
 // Import Swiper if you're using it in this component
 // import 'swiper/css';
 // import 'swiper/css/pagination';
@@ -173,7 +171,7 @@ declare global {
 document.addEventListener('DOMContentLoaded', () => {
     // Objeto de utilidades para funciones comunes
     const utils = {
-        toggleClass: (element, className, force) => {
+        toggleClass: (element: HTMLElement | null, className: string, force?: boolean) => {
             if (element) {
                 if (force !== undefined) {
                     element.classList[force ? 'add' : 'remove'](className);
@@ -182,13 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         },
-        addSafeEventListener: (element, event, callback) => {
+        addSafeEventListener: (element: HTMLElement | null, event: string, callback: (e: Event) => void) => {
             if (element) {
                 element.addEventListener(event, callback);
             }
         },
-        select: (selector, parent = document) => parent.querySelector(selector),
-        selectAll: (selector, parent = document) => parent.querySelectorAll(selector)
+        select: (selector: string, parent: Document | HTMLElement = document): HTMLElement | null => parent.querySelector(selector),
+        selectAll: (selector: string, parent: Document | HTMLElement = document): NodeListOf<HTMLElement> => parent.querySelectorAll(selector)
     };
 
     // Animaciones al hacer scroll
@@ -253,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Manejar dropdowns en móvil
             dropdowns.forEach(dropdown => {
                 const trigger = dropdown.querySelector('a');
-                utils.addSafeEventListener(trigger, 'click', (e) => {
+                utils.addSafeEventListener(trigger, 'click', (e: Event) => {
                     if (window.innerWidth <= 768) {
                         e.preventDefault();
                         utils.toggleClass(dropdown, 'active', true);
