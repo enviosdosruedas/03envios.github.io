@@ -1,5 +1,11 @@
 ---
 const currentYear = new Date().getFullYear();
+// Add Swiper type declaration
+declare global {
+  interface Window {
+    Swiper: typeof import('swiper').default;
+  }
+}
 // Import Swiper if you're using it in this component
 // import 'swiper/css';
 // import 'swiper/css/pagination';
@@ -259,8 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar Swiper para la sección de emprendedores
     const initSwiper = () => {
-        if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
-            new Swiper(".mySwiper", {
+        if (document.querySelector('.mySwiper') && typeof window.Swiper !== 'undefined') {
+            new (window.Swiper as unknown as typeof import('swiper').default)(".mySwiper", {
                 slidesPerView: 1,
                 spaceBetween: 30,
                 loop: true,
