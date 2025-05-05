@@ -1,0 +1,38 @@
+---
+import '../styles/herosecundario.css';
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  buttonText?: string;
+  buttonUrl?: string;
+}
+
+const {
+  title = "Mensajería - Envíos Express",
+  subtitle = "Envios DosRuedas",
+  description = "¡Envía tus paquetes de manera rápida y segura! Descubre nuestros precios y opciones para que tu envío llegue a tiempo.",
+  buttonText = "Cotiza el servicio",
+  buttonUrl = "/cotizador-envios-express"
+} = Astro.props;
+---
+
+<section id="banner-principal" class="hero bg-gradient-to-r from-primary-700 to-primary-900 py-16">
+  <div class="hero-content container mx-auto px-4 text-center text-white">
+    <h1 class="text-4xl md:text-5xl font-bold mb-2">
+      <b>{title}</b>
+    </h1>
+    <h2 class="text-xl md:text-2xl font-semibold mb-6">{subtitle}</h2>
+    <div class="hero-highlight bg-white/10 backdrop-blur-sm p-6 rounded-lg inline-block">
+      <p class="text-lg mb-4">{description}</p>
+      {buttonText && buttonUrl && (
+        <a
+          href={buttonUrl}
+          class="inline-block bg-secondary-500 hover:bg-secondary-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+        >
+          {buttonText}
+        </a>
+      )}
+    </div>
+  </div>
+</section>
