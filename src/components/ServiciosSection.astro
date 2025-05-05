@@ -1,0 +1,116 @@
+---
+interface Servicio {
+  icon: string;
+  iconClass: string;
+  borderColor: string;
+  title: string;
+  description: string;
+  features: string[];
+  url: string;
+  tip: string;
+}
+
+const servicios: Servicio[] = [
+  {
+    icon: 'fa-bolt',
+    iconClass: 'text-polynesian-blue',
+    borderColor: 'border-polynesian-blue',
+    title: 'Envíos Express',
+    description: 'Entregas garantizadas el mismo día para pedidos solicitados antes de las 15:00.',
+    features: [
+      'Entrega mismo día',
+      'Rango horario a elección',
+      'Servicio prioritario'
+    ],
+    url: '/mensajeria-envios-express',
+    tip: 'Un embalaje adecuado asegura la integridad de tus productos durante el envío.'
+  },
+  {
+    icon: 'fa-piggy-bank',
+    iconClass: 'text-mikado-yellow',
+    borderColor: 'border-mikado-yellow',
+    title: 'Envíos LowCost',
+    description: 'Servicio económico con entregas entre 10:00 y 19:00. Ideal para envíos que no requieren horario específico.',
+    features: [
+      'Precio económico',
+      'Entrega garantizada',
+      'Mismo día disponible'
+    ],
+    url: '/mensajeria-envios-lowcost',
+    tip: 'Programa tus envíos con anticipación para aprovechar al máximo este servicio económico.'
+  },
+  {
+    icon: 'fa-motorcycle',
+    iconClass: 'text-royal-blue',
+    borderColor: 'border-royal-blue',
+    title: 'Delivery Gastronómico',
+    description: 'Servicio especializado para restaurantes y comercios gastronómicos. Entregas rápidas y cuidadosas para tus productos frescos.',
+    features: [
+      'Entrega en tiempo récord',
+      'Manipulación segura de alimentos',
+      'Cobertura en toda la ciudad'
+    ],
+    url: '/delivery-moto-express',
+    tip: 'Elige envases adecuados para mantener la calidad de tus productos.'
+  }
+];
+---
+
+<section class="py-12 md:py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 text-royal-blue">Nuestros Servicios Destacados</h2>
+      <div class="h-1 w-24 bg-mikado-yellow mx-auto mb-6 rounded-full"></div>
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        Brindamos soluciones profesionales adaptadas a tus necesidades. ¡Vos encárgate de vender, nosotros hacemos el envío!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {servicios.map((servicio, index) => (
+        <div 
+          class={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-t-4 ${servicio.borderColor}`}
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="p-6">
+            <div class="flex justify-center mb-4">
+              <div class={`w-16 h-16 rounded-full bg-opacity-20 flex items-center justify-center ${index === 0 ? 'bg-polynesian-blue' : index === 1 ? 'bg-mikado-yellow' : 'bg-royal-blue'}`}>
+                <i class={`fas ${servicio.icon} text-3xl ${servicio.iconClass}`}></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3 text-royal-blue">{servicio.title}</h3>
+            <p class="text-gray-600 text-center mb-6">
+              {servicio.description}
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              {servicio.features.map(feature => (
+                <li class="flex items-start">
+                  <i class={`fas fa-check mt-1 mr-3 ${servicio.iconClass}`}></i>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="text-center">
+              <a 
+                href={servicio.url} 
+                class="inline-flex items-center px-5 py-2 rounded-lg bg-royal-blue hover:bg-marian-blue text-white font-medium transition-colors duration-200 shadow-md"
+              >
+                Información
+                <i class="fas fa-circle-question ml-2"></i>
+              </a>
+            </div>
+
+            <!-- Tip -->
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-start">
+              <i class="fas fa-lightbulb text-mikado-yellow mt-1 mr-2"></i>
+              <p class="text-sm text-gray-500">{servicio.tip}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

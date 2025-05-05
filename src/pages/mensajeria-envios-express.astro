@@ -1,0 +1,301 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// SEO
+const title = "Servicio de Envíos Express - Mensajería Rápida";
+const description = "Nuestro servicio de envíos express garantiza entregas el mismo día para pedidos realizados antes de las 15:00. Delivery rápido y seguro en Mar del Plata.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <section class="bg-gradient-to-br from-royal-blue to-marian-blue py-12 md:py-20 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Servicio de Envíos Express</h1>
+        <p class="max-w-2xl mx-auto text-gray-200 text-lg">
+          Entrega garantizada el mismo día. Ideal para envíos urgentes y prioritarios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-2xl md:text-3xl font-bold text-royal-blue mb-6">
+            Entregas rápidas y eficientes para tus necesidades urgentes
+          </h2>
+          <p class="text-gray-700 mb-6">
+            Nuestro servicio Express está diseñado para aquellas situaciones donde el tiempo es crucial. Garantizamos la entrega el mismo día para todos los pedidos realizados antes de las 15:00, con la posibilidad de elegir un rango horario específico.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <div class="mr-3 mt-1 text-polynesian-blue">
+                <i class="fas fa-check-circle text-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-900">Entrega el mismo día</h3>
+                <p class="text-gray-600">Para pedidos realizados antes de las 15:00, garantizamos la entrega en el mismo día.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-1 text-polynesian-blue">
+                <i class="fas fa-check-circle text-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-900">Rango horario personalizado</h3>
+                <p class="text-gray-600">Elige el rango horario que mejor se adapte a tus necesidades para recibir o enviar tu paquete.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-1 text-polynesian-blue">
+                <i class="fas fa-check-circle text-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-gray-900">Servicio prioritario</h3>
+                <p class="text-gray-600">Tus envíos tienen prioridad sobre otros servicios, asegurando la máxima rapidez.</p>
+              </div>
+            </li>
+          </ul>
+          
+          <div class="flex flex-wrap gap-4">
+            <a 
+              href="/cotizador-envios-express" 
+              class="inline-flex items-center px-6 py-3 rounded-lg bg-mikado-yellow hover:bg-gold text-royal-blue font-medium transition-colors duration-200 shadow-md"
+            >
+              Cotiza tu Envío
+              <i class="fas fa-calculator ml-2"></i>
+            </a>
+            <a 
+              href="https://wa.me/+542236602699?text=Hola!%20Me%20interesa%20el%20servicio%20de%20Envíos%20Express.%20Quisiera%20más%20información."
+              class="inline-flex items-center px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition-colors duration-200 shadow-md"
+              target="_blank"
+              rel="noopener"
+            >
+              Consultar por WhatsApp
+              <i class="fab fa-whatsapp ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="relative" data-aos="fade-left" data-aos-delay="100">
+          <div class="absolute inset-0 bg-mikado-yellow rounded-full blur-3xl opacity-20 transform -translate-x-4 translate-y-4"></div>
+          <img 
+            src="https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Servicio de mensajería express" 
+            class="rounded-lg shadow-xl relative z-10"
+            width="600"
+            height="400"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-royal-blue">¿Cómo funciona nuestro servicio Express?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Nuestro proceso está diseñado para ser simple y eficiente, garantizando la mejor experiencia para nuestros clientes.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-12 h-12 bg-royal-blue text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <span class="font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-lg font-semibold text-center mb-3 text-royal-blue">Solicitas tu envío</h3>
+          <p class="text-gray-600 text-center">
+            Realiza tu pedido a través de nuestra web, WhatsApp o por teléfono antes de las 15:00 para entrega el mismo día.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-12 h-12 bg-royal-blue text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <span class="font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-lg font-semibold text-center mb-3 text-royal-blue">Confirmamos tu pedido</h3>
+          <p class="text-gray-600 text-center">
+            Te contactamos para confirmar los detalles, dirección y rango horario preferido para la recogida o entrega.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 bg-royal-blue text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <span class="font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-lg font-semibold text-center mb-3 text-royal-blue">Recogemos tu paquete</h3>
+          <p class="text-gray-600 text-center">
+            Nuestro mensajero recoge tu paquete en la dirección y horario acordados, verificando que todo esté en orden.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-12 h-12 bg-royal-blue text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+            <span class="font-bold text-xl">4</span>
+          </div>
+          <h3 class="text-lg font-semibold text-center mb-3 text-royal-blue">Entregamos el mismo día</h3>
+          <p class="text-gray-600 text-center">
+            Realizamos la entrega en el mismo día dentro del rango horario seleccionado, con confirmación al finalizar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="bg-royal-blue rounded-xl overflow-hidden shadow-xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <div class="p-8 md:p-12 text-white">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">¿Necesitas un servicio prioritario?</h2>
+            <p class="text-gray-200 mb-6">
+              Con nuestro servicio Express, tus envíos tienen la máxima prioridad. Ideal para documentos importantes, productos perecederos o cualquier entrega que no pueda esperar.
+            </p>
+            <a 
+              href="/cotizador-envios-express" 
+              class="inline-flex items-center px-6 py-3 rounded-lg bg-mikado-yellow hover:bg-gold text-royal-blue font-medium transition-colors duration-200 shadow-md"
+            >
+              Cotiza ahora
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          <div class="bg-marian-blue p-8 md:p-12">
+            <h3 class="text-xl font-bold mb-6 text-white">Beneficios del servicio Express</h3>
+            <ul class="space-y-4 text-white">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-3 mt-1 text-mikado-yellow"></i>
+                <span>Entregas en el mismo día para pedidos antes de las 15:00</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-3 mt-1 text-mikado-yellow"></i>
+                <span>Seguimiento en tiempo real de tu envío</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-3 mt-1 text-mikado-yellow"></i>
+                <span>Confirmación de entrega inmediata</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-3 mt-1 text-mikado-yellow"></i>
+                <span>Manipulación cuidadosa de todos los paquetes</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mr-3 mt-1 text-mikado-yellow"></i>
+                <span>Personal profesional y capacitado</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-royal-blue mb-4">Preguntas frecuentes sobre Envíos Express</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Respondemos a las dudas más comunes sobre nuestro servicio de mensajería express.
+        </p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-4">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up">
+            <button class="faq-question w-full text-left px-6 py-4 font-medium text-royal-blue flex justify-between items-center">
+              <span>¿Cuál es el horario límite para solicitar una entrega el mismo día?</span>
+              <i class="fas fa-chevron-down text-royal-blue transition-transform duration-200"></i>
+            </button>
+            <div class="faq-answer px-6 pb-4 pt-0 hidden">
+              <p class="text-gray-600">
+                Para garantizar la entrega el mismo día, debes realizar tu pedido antes de las 15:00. Los pedidos recibidos después de esa hora serán programados para el siguiente día hábil.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <button class="faq-question w-full text-left px-6 py-4 font-medium text-royal-blue flex justify-between items-center">
+              <span>¿Puedo elegir un horario específico para la entrega?</span>
+              <i class="fas fa-chevron-down text-royal-blue transition-transform duration-200"></i>
+            </button>
+            <div class="faq-answer px-6 pb-4 pt-0 hidden">
+              <p class="text-gray-600">
+                Sí, ofrecemos rangos horarios que puedes seleccionar para la entrega de tu paquete, por ejemplo: mañana (9:00 a 13:00) o tarde (13:00 a 18:00). Para horarios más específicos, contáctanos directamente.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <button class="faq-question w-full text-left px-6 py-4 font-medium text-royal-blue flex justify-between items-center">
+              <span>¿Cuál es la diferencia entre el servicio Express y LowCost?</span>
+              <i class="fas fa-chevron-down text-royal-blue transition-transform duration-200"></i>
+            </button>
+            <div class="faq-answer px-6 pb-4 pt-0 hidden">
+              <p class="text-gray-600">
+                El servicio Express garantiza entrega el mismo día con prioridad y permite elegir rangos horarios específicos. El servicio LowCost es más económico, pero no ofrece elección de horario y tiene menor prioridad en la ruta de entrega.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <button class="faq-question w-full text-left px-6 py-4 font-medium text-royal-blue flex justify-between items-center">
+              <span>¿Cuál es el peso máximo que puedo enviar?</span>
+              <i class="fas fa-chevron-down text-royal-blue transition-transform duration-200"></i>
+            </button>
+            <div class="faq-answer px-6 pb-4 pt-0 hidden">
+              <p class="text-gray-600">
+                Nuestro servicio Express está diseñado para paquetes de hasta 10kg. Para envíos de mayor peso, ofrecemos soluciones personalizadas. Contáctanos para obtener más información.
+              </p>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+            <button class="faq-question w-full text-left px-6 py-4 font-medium text-royal-blue flex justify-between items-center">
+              <span>¿Se puede rastrear el envío en tiempo real?</span>
+              <i class="fas fa-chevron-down text-royal-blue transition-transform duration-200"></i>
+            </button>
+            <div class="faq-answer px-6 pb-4 pt-0 hidden">
+              <p class="text-gray-600">
+                Sí, proporcionamos actualizaciones de estado y te notificamos cuando el paquete está en camino y cuando ha sido entregado. Para consultas específicas durante el trayecto, puedes contactarnos directamente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // FAQ accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle this FAQ
+        answer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+        
+        // Optional: Close other FAQs
+        faqQuestions.forEach(otherQuestion => {
+          if (otherQuestion !== question) {
+            const otherAnswer = otherQuestion.nextElementSibling;
+            const otherIcon = otherQuestion.querySelector('i');
+            
+            otherAnswer.classList.add('hidden');
+            otherIcon.classList.remove('rotate-180');
+          }
+        });
+      });
+    });
+  });
+</script>

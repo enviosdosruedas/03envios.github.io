@@ -1,0 +1,258 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroCotizador from '../components/HeroCotizador.astro';
+import CotizadorForm from '../components/CotizadorForm.astro';
+import MapaComponent from '../components/MapaComponent.astro';
+import SocialCarousel from '../components/SocialCarousel.astro';
+// SEO
+const title = "Servicio de Mensajería, Envíos y Delivery en Mar del Plata";
+const description = "Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata. Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <main class="min-h-screen bg-gray-50">
+    <HeroCotizador 
+      title="Cotizador Envíos lowcost"
+      subtitle="Envios DosRuedas"
+      description="Calcule el costo de su envío lowcost en Mar del Plata"
+      buttonText="Cotizar ahora"
+      buttonUrl="#cotizador-form"
+    />
+
+
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <CotizadorForm />
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold text-primary-800 mb-4">Resultado</h3>
+          <div id="resultado" class="mb-6">
+            <p id="distancia" class="text-lg mb-2">Distancia: <span class="font-semibold">-- km</span></p>
+            <p id="precio" class="text-xl text-secondary-700 mb-4">Precio estimado: <span class="font-semibold">$--</span></p>
+            <p class="text-sm text-gray-600 italic">
+              Los valores son aproximados. Pueden existir adicionales (Distancia retiro, bulto, demora, lluvia, etc).
+              Para un valor exacto comunicarse por whatsapp al 
+              <a href="https://wa.me/5492235235689" class="text-primary-600 hover:underline">+54 9 223 523-5689</a>
+            </p>
+          </div>
+          
+          <div id="mapa" class="w-full h-64 md:h-80 rounded-lg overflow-hidden">
+            <!-- El mapa se cargará aquí -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <SocialCarousel />
+    <MapaComponent  />
+  </main>
+</Layout>
+
+<script>
+  // Inicializar el mapa y configurar funcionalidad
+  let map, directionsService, directionsRenderer, geocoder;
+  let marcadorOrigen, marcadorDestino;
+  const precioBase = 800; // Precio base para los envíos
+  const precioPorKm = 150; // Precio adicional por kilómetro
+
+  // Define Google Maps types
+  declare global {
+    interface Window {
+      google: any;
+      initMap: () => void;
+    }
+  }
+
+  function initMap() {
+    // Coordenadas de Mar del Plata, Argentina
+    const marDelPlata = { lat: -38.0055, lng: -57.5426 };
+    
+    // Creamos el mapa centrado en Mar del Plata
+    map = new (window as any).google.maps.Map(document.getElementById("mapa"), {
+      zoom: 13,
+      center: marDelPlata,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: true,
+      zoomControl: true,
+    });
+
+    // Inicializamos los servicios de Google Maps
+    directionsService = new window.google.maps.DirectionsService();
+    directionsRenderer = new window.google.maps.DirectionsRenderer({
+      map: map,
+      suppressMarkers: true,
+    });
+    geocoder = new window.google.maps.Geocoder();
+
+    // Escuchamos los eventos de cambio en los campos de dirección
+    document.getElementById("direccion-origen")?.addEventListener("change", calcularRuta);
+    document.getElementById("direccion-destino")?.addEventListener("change", calcularRuta);
+    
+    // Botón para calcular
+    document.getElementById("calcular-btn")?.addEventListener("click", calcularRuta);
+  }
+
+  async function geocodificarDireccion(direccion) {
+    // Añadimos "Mar del Plata, Argentina" a la dirección para mejorar la precisión
+    const direccionCompleta = `${direccion}, Mar del Plata, Argentina`;
+    
+    try {
+      const response = await geocoder.geocode({ address: direccionCompleta });
+      if (response.results && response.results.length > 0) {
+        return response.results[0].geometry.location;
+      }
+      throw new Error("No se encontró la dirección");
+    } catch (error) {
+      console.error("Error al geocodificar:", error);
+      return null;
+    }
+  }
+
+  async function calcularRuta() {
+    // Obtenemos las direcciones
+    const origenElement = document.getElementById("direccion-origen") as HTMLInputElement;
+    const destinoElement = document.getElementById("direccion-destino") as HTMLInputElement;
+    
+    const origen = origenElement?.value;
+    const destino = destinoElement?.value;
+    
+    if (!origen || !destino) {
+      alert("Por favor, ingrese tanto la dirección de origen como la de destino");
+      return;
+    }
+
+    try {
+      // Calculamos la ruta usando el servicio de direcciones
+      const response = await directionsService.route({
+        origin: `${origen}, Mar del Plata, Argentina`,
+        destination: `${destino}, Mar del Plata, Argentina`,
+        travelMode: window.google.maps.TravelMode.DRIVING,
+      });
+
+      // Mostramos la ruta en el mapa
+      directionsRenderer.setDirections(response);
+      
+      // Extraemos la distancia
+      const route = response.routes[0];
+      const distanciaTexto = route.legs[0].distance.text;
+      const distanciaValor = route.legs[0].distance.value / 1000; // Convertimos a kilómetros
+      
+      // Añadimos marcadores personalizados
+      colocarMarcadores(
+        route.legs[0].start_location,
+        route.legs[0].end_location,
+        route.legs[0].start_address,
+        route.legs[0].end_address
+      );
+      
+      // Calculamos el precio
+      calcularPrecio(distanciaValor);
+      
+      // Actualizamos la interfaz
+      const distanciaElement = document.getElementById("distancia");
+      if (distanciaElement) {
+        distanciaElement.innerHTML = `Distancia: <span class="font-semibold">${distanciaTexto}</span>`;
+      }
+    } catch (error) {
+      console.error("Error al calcular la ruta:", error);
+      alert("No se pudo calcular la ruta. Asegúrese de que las direcciones sean válidas en Mar del Plata.");
+    }
+  }
+
+  function calcularPrecio(distanciaKm) {
+    // Definimos el precio según la distancia en kilómetros
+    let precioValor;
+    
+    if (distanciaKm <= 2.9) {
+      precioValor = 2000;
+    } else if (distanciaKm > 2.9 && distanciaKm <= 4.9) {
+      precioValor = 2700;
+    } else if (distanciaKm > 4.9 && distanciaKm <= 8.9) {
+      precioValor = 3800;
+    } else if (distanciaKm > 8.9 && distanciaKm <= 13) {
+      precioValor = 5400;
+    } else if (distanciaKm > 13 && distanciaKm <= 15) {
+      precioValor = 7600;
+    } else if (distanciaKm > 15 && distanciaKm <= 17) {
+      precioValor = 7600;
+    } else if (distanciaKm > 17 && distanciaKm <= 19) {
+      precioValor = 9500;
+    } else if (distanciaKm > 19 && distanciaKm <= 21) {
+      precioValor = 9500;
+    } else {
+      precioValor = "Consulte por WhatsApp";
+    }
+    
+    // Actualizamos la interfaz
+    const precioElement = document.getElementById("precio");
+    if (precioElement) {
+      if (typeof precioValor === "number") {
+        precioElement.innerHTML = `Precio estimado: <span class="font-semibold">$${precioValor.toLocaleString('es-AR')}</span>`;
+      } else {
+        precioElement.innerHTML = `Precio estimado: <span class="font-semibold">${precioValor}</span>`;
+      }
+    }
+  }
+
+  function colocarMarcadores(origenPos, destinoPos, origenDir, destinoDir) {
+    // Eliminamos marcadores previos si existen
+    if (marcadorOrigen) marcadorOrigen.setMap(null);
+    if (marcadorDestino) marcadorDestino.setMap(null);
+    
+    // Creamos marcador de origen (verde)
+    marcadorOrigen = new window.google.maps.Marker({
+      position: origenPos,
+      map: map,
+      icon: {
+        path: window.google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: "#10B981",
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 2,
+      },
+      title: "Origen: " + origenDir,
+    });
+    
+    // Creamos marcador de destino (naranja)
+    marcadorDestino = new window.google.maps.Marker({
+      position: destinoPos,
+      map: map,
+      icon: {
+        path: window.google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: "#F97316",
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 2,
+      },
+      title: "Destino: " + destinoDir,
+    });
+  }
+
+  // Cuando la página se cargue, inicializamos el mapa
+  window.addEventListener("DOMContentLoaded", () => {
+    // Cargamos la API de Google Maps
+    const script = document.createElement("script");
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAOTIWiQtyy8VWFUGIIBQBAOdebhXzL7IE&callback=initMap";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    
+    // Definimos la función para que Google Maps pueda llamarla
+    window.initMap = initMap;
+    
+    // Manejo del menú móvil
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const navMenu = document.querySelector(".nav-menu");
+    if (mobileMenuButton && navMenu) {
+      mobileMenuButton.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+      });
+    }
+  });
+</script>

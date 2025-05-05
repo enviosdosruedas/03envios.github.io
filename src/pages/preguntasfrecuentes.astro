@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Preguntas Frecuentes - Envios DosRuedas | Mensajería en Mar del Plata";
+const description = "Encuentra respuestas a las preguntas más comunes sobre nuestros servicios de mensajería y delivery en Mar del Plata. Horarios, tarifas y cobertura.";
+
+const faqs = [
+  {
+    question: "¿Cuál es el horario de atención?",
+    answer: "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00 y los sábados de 9:00 a 15:00."
+  },
+  {
+    question: "¿Cuál es el área de cobertura?",
+    answer: "Cubrimos toda la ciudad de Mar del Plata y zonas aledañas como Batán, Santa Clara del Mar y Chapadmalal, entre otras."
+  },
+  {
+    question: "¿Cómo puedo solicitar un envío?",
+    answer: "Puedes solicitar un envío a través de WhatsApp al +54 223 660 2699, por teléfono o mediante nuestro formulario de contacto en la web."
+  },
+  {
+    question: "¿Cuál es la diferencia entre envío Express y LowCost?",
+    answer: "El servicio Express garantiza la entrega en el mismo día para pedidos antes de las 15:00, con horario específico a elección. El servicio LowCost es más económico, con entregas entre las 10:00 y 19:00 sin horario específico."
+  },
+  {
+    question: "¿Hacen envíos los domingos o feriados?",
+    answer: "Normalmente no operamos los domingos. Para feriados, contamos con disponibilidad limitada que debe coordinarse con anticipación y puede tener tarifas especiales."
+  },
+  {
+    question: "¿Cuánto tiempo tarda en llegar un envío Express?",
+    answer: "Los envíos Express se entregan en un plazo máximo de 3 horas desde la recepción del pedido, dependiendo de la distancia y el tráfico."
+  },
+  {
+    question: "¿Qué métodos de pago aceptan?",
+    answer: "Aceptamos transferencias bancarias, Mercado Pago, efectivo y pago con tarjeta de débito/crédito mediante dispositivos móviles."
+  },
+  {
+    question: "¿Tienen servicio de moto fija para empresas?",
+    answer: "Sí, ofrecemos servicio de moto fija para empresas con tarifas especiales por hora o jornada completa. Contactanos para una cotización personalizada."
+  },
+  {
+    question: "¿Tienen límite de peso para los paquetes?",
+    answer: "Sí, el límite estándar es de 10kg por envío. Para paquetes más pesados, consultar disponibilidad y tarifa especial."
+  },
+  {
+    question: "¿Qué ocurre si no hay nadie para recibir el envío?",
+    answer: "Si no hay nadie para recibir el envío, nuestro cadete se comunicará con el remitente para coordinar opciones. Podemos reprogramar la entrega para otro momento o devolver el paquete (con costo adicional)."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <header class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-royal-blue mb-3">Preguntas Frecuentes</h1>
+        <div class="highlight-bar mx-auto"></div>
+        <p class="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
+          Encuentra respuestas a las dudas más comunes sobre nuestros servicios de mensajería y delivery.
+        </p>
+      </header>
+      
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="faq-item border-b border-gray-200 pb-5 last:border-b-0" data-aos="fade-up" data-aos-delay={index * 50}>
+              <button class="faq-question w-full flex justify-between items-center text-left">
+                <h2 class="text-xl font-semibold text-gray-800">{faq.question}</h2>
+                <i class="fas fa-chevron-down text-royal-blue transition-transform duration-300"></i>
+              </button>
+              <div class="faq-answer mt-3 text-gray-600 hidden">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <p class="text-lg text-gray-700 mb-4">¿No encontraste lo que buscabas?</p>
+        <a href="/contacto" class="inline-flex items-center px-6 py-3 bg-royal-blue text-white font-medium rounded-lg hover:bg-marian-blue transition duration-300">
+          Contáctanos directamente
+          <i class="fas fa-envelope ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle answer visibility
+        answer?.classList.toggle('hidden');
+        
+        // Toggle icon rotation
+        if (icon) {
+          icon.classList.toggle('rotate-180');
+        }
+        
+        // Close other answers
+        faqQuestions.forEach(q => {
+          if (q !== question) {
+            const otherAnswer = q.nextElementSibling;
+            const otherIcon = q.querySelector('i');
+            
+            if (!otherAnswer?.classList.contains('hidden')) {
+              otherAnswer?.classList.add('hidden');
+              otherIcon?.classList.remove('rotate-180');
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-item {
+    @apply transition-all duration-300;
+  }
+  
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .faq-answer:not(.hidden) {
+    max-height: 500px;
+    animation: slideDown 0.3s ease-in-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

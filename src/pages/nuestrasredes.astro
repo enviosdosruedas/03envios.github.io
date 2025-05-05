@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Nuestras Redes Sociales - Envios DosRuedas | Mar del Plata";
+const description = "Conéctate con nosotros en redes sociales. Síguenos para estar al día con novedades, promociones y consejos sobre nuestros servicios de envíos en Mar del Plata.";
+
+const socialNetworks = [
+  {
+    name: "Instagram",
+    username: "@enviosdosruedas",
+    url: "https://www.instagram.com/enviosdosruedas/",
+    icon: "fa-instagram",
+    color: "from-purple-600 to-pink-600",
+    description: "Seguinos en Instagram para ver fotos de nuestro día a día, entregas especiales y consejos de envíos."
+  },
+  {
+    name: "Facebook",
+    username: "Envios DosRuedas",
+    url: "https://www.facebook.com/enviosdosruedas",
+    icon: "fa-facebook-f",
+    color: "bg-blue-600",
+    description: "Visitá nuestra página de Facebook para conocer nuestras últimas novedades, eventos y testimonios de clientes."
+  },
+  {
+    name: "WhatsApp",
+    username: "+54 223 660 2699",
+    url: "https://wa.me/+542236602699?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Encontr%C3%A9%20su%20contacto%20en%20el%20sitio%20web%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20mensajer%C3%ADa%20%F0%9F%93%A6%20y%20delivery%20%F0%9F%9B%B5.%20%C2%A1Gracias%21",
+    icon: "fa-whatsapp",
+    color: "bg-green-600",
+    description: "Contactanos por WhatsApp para consultas, cotizaciones rápidas o solicitar servicios de mensajería."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <header class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-royal-blue mb-3">Nuestras Redes Sociales</h1>
+        <div class="highlight-bar mx-auto"></div>
+        <p class="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
+          Conectate con nosotros a través de nuestras redes sociales para conocer nuestras últimas novedades, promociones y consejos.
+        </p>
+      </header>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {socialNetworks.map((social, index) => (
+          <div class={`rounded-xl overflow-hidden shadow-lg hover-effect`} data-aos="fade-up" data-aos-delay={index * 100}>
+            <div class={`p-6 text-white bg-gradient-to-r ${social.color}`}>
+              <div class="flex items-center justify-center mb-4">
+                <i class={`fab ${social.icon} text-5xl`}></i>
+              </div>
+              <h2 class="text-2xl font-bold text-center mb-2">{social.name}</h2>
+              <p class="text-center text-white/80 mb-4">{social.username}</p>
+            </div>
+            <div class="p-6 bg-white">
+              <p class="text-gray-600 mb-6">{social.description}</p>
+              <div class="text-center">
+                <a href={social.url} target="_blank" rel="noopener" 
+                   class="inline-flex items-center px-6 py-3 bg-royal-blue text-white font-medium rounded-lg hover:bg-marian-blue transition duration-300">
+                  Visitar {social.name}
+                  <i class={`fab ${social.icon} ml-2`}></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="mt-16 max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md" data-aos="fade-up">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">¿Por qué seguirnos?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex items-start">
+            <div class="mr-4 bg-blue-100 text-royal-blue p-3 rounded-full">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2">Novedades y Anuncios</h3>
+              <p class="text-gray-600">Mantente informado sobre nuevos servicios, cambios de horarios o novedades importantes.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="mr-4 bg-blue-100 text-royal-blue p-3 rounded-full">
+              <i class="fas fa-percent"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2">Promociones Exclusivas</h3>
+              <p class="text-gray-600">Accede a descuentos y promociones especiales para nuestros seguidores en redes.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="mr-4 bg-blue-100 text-royal-blue p-3 rounded-full">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2">Consejos y Tips</h3>
+              <p class="text-gray-600">Compartimos consejos útiles para optimizar tus envíos y ahorrar en costos de logística.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="mr-4 bg-blue-100 text-royal-blue p-3 rounded-full">
+              <i class="fas fa-comment-dots"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2">Atención Directa</h3>
+              <p class="text-gray-600">Contacto directo para consultas rápidas y seguimiento personalizado de tus envíos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+</style>

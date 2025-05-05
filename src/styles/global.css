@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables personalizadas */
+:root {
+  --royal-blue: #00296b;
+  --marian-blue: #003f88;
+  --polynesian-blue: #00509d;
+  --mikado-yellow: #fdc500;
+  --gold: #ffd500;
+}
+
+/* Estilos globales */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  @apply text-gray-800;
+}
+
+/* Animaciones personalizadas */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Botones */
+.btn-primary {
+  @apply bg-mikado-yellow text-royal-blue font-medium py-2 px-4 rounded-lg hover:bg-gold transition-colors duration-300 inline-flex items-center justify-center;
+}
+
+.btn-secondary {
+  @apply bg-royal-blue text-white font-medium py-2 px-4 rounded-lg hover:bg-marian-blue transition-colors duration-300 inline-flex items-center justify-center;
+}
+
+.btn-outline {
+  @apply border border-marian-blue text-marian-blue font-medium py-2 px-4 rounded-lg hover:bg-marian-blue hover:text-white transition-colors duration-300 inline-flex items-center justify-center;
+}
+
+/* Transiciones suaves */
+a, button {
+  @apply transition-all duration-300;
+}
+
+/* Secciones */
+section {
+  @apply overflow-hidden;
+}
+
+/* Focus en elementos para accesibilidad */
+:focus {
+  @apply outline-none ring-2 ring-mikado-yellow;
+}
+
+/* Estilos para skip links (accesibilidad) */
+.skip-link {
+  @apply bg-royal-blue text-white fixed top-0 left-0 -translate-y-full focus:translate-y-0 z-50 px-4 py-2;
+}
+
+/* Elementos de imagen */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold leading-tight;
+}
+
+/* Efectos de hover para tarjetas */
+.hover-card {
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}

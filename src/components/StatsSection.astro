@@ -1,0 +1,86 @@
+---
+interface Stat {
+  icon: string;
+  value: string;
+  label: string;
+  extraInfo?: string[];
+  color?: string;
+  animation?: string;
+}
+
+// Definición de estadísticas con valores por defecto para propiedades opcionales
+const stats: Stat[] = [
+  {
+    icon: 'fa-google',
+    value: '4.9',
+    label: 'Calificación en Google',
+    extraInfo: ['⭐ ⭐ ⭐ ⭐ ⭐'],
+    color: 'text-marian-blue',
+    animation: 'fade-up'
+  },
+  {
+    icon: 'fa-motorcycle',
+    value: '+1000',
+    label: 'Envíos Mensuales',
+    color: 'text-marian-blue',
+    animation: 'fade-up'
+  },
+  {
+    icon: 'fa-clock',
+    value: 'Horario',
+    label: '',
+    extraInfo: ['Lunes a Viernes', '09:00 a 18:00', 'Sábados', '09:00 a 15:00'],
+    color: 'text-marian-blue',
+    animation: 'fade-up'
+  }
+];
+
+// Propiedades configurables para el componente
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  bgColor?: string;
+}
+
+const {
+  title = "Nuestra Visión Global",
+  subtitle = "Datos que respaldan nuestra calidad y compromiso. ¡Descubre por qué somos la solución confiable para tus envíos!",
+  bgColor = "bg-gray-50"
+} = Astro.props;
+---
+
+<section class={`py-12 md:py-20 ${bgColor}`}>
+  <div class="container mx-auto px-4">
+    <header class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 text-royal-blue">{title}</h2>
+      <div class="h-1 w-24 bg-mikado-yellow mx-auto mb-6 rounded-full"></div>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {stats.map((stat, index) => (
+        <div 
+          class="bg-white rounded-xl shadow-md px-6 py-8 text-center transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+          data-aos={stat.animation || "fade-up"}
+          data-aos-delay={index * 100}
+        >
+          <div class="inline-block p-4 rounded-full bg-marian-blue bg-opacity-10 mb-4">
+            <i class={`fas ${stat.icon} text-2xl ${stat.color || "text-marian-blue"}`}></i>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold text-royal-blue mb-2">{stat.value}</h3>
+          {stat.label && <p class="text-gray-600 mb-2">{stat.label}</p>}
+          
+          {stat.extraInfo && (
+            <div class="text-sm text-gray-500 mt-2">
+              {stat.extraInfo.map(line => (
+                <p class="leading-relaxed">{line}</p>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

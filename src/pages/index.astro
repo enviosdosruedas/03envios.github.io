@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import StatsSection from '../components/StatsSection.astro';
+import CotizadorSection from '../components/CotizadorSection.astro';
+import EmprendedoresSection from '../components/EmprendedoresSection.astro';
+import ServiciosSection from '../components/ServiciosSection.astro';
+import SocialBanner from '../components/SocialBanner.astro';
+
+// SEO
+const title = "Servicio de Mensajería, Envíos y Delivery en Mar del Plata";
+const description = "Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata. Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <!-- Hero Section -->
+  <HeroSection 
+    title="Envios DosRuedas"
+    description="Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata. Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío."
+    imageSrc="/LogoEnviosDosRuedas.webp"
+    imageAlt="Motociclista de delivery - Envios DosRuedas"
+  />
+
+  <!-- Stats Section -->
+  <StatsSection />
+  
+  <!-- Cotizador Section -->
+  <CotizadorSection />
+  
+  <!-- Emprendedores Section -->
+  <EmprendedoresSection />
+  
+  <!-- Servicios Section -->
+  <ServiciosSection />
+  
+  <!-- Social Banner -->
+  <SocialBanner />
+  
+</Layout>

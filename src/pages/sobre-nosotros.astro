@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Sobre Nosotros - Envios DosRuedas | Mensajería en Mar del Plata";
+const description = "Conoce más sobre Envios DosRuedas, tu servicio de mensajería y delivery de confianza en Mar del Plata. Nuestra historia, valores y compromiso con la excelencia.";
+---
+
+<Layout title={title} description={description}>
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <header class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-royal-blue mb-3">Sobre Nosotros</h1>
+        <div class="highlight-bar mx-auto"></div>
+      </header>
+      
+      <div class="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+        <div class="order-2 md:order-1" data-aos="fade-right">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Nuestra Historia</h2>
+          <p class="text-gray-600 mb-4">
+            Envios DosRuedas nació en 2018 con una misión clara: revolucionar la forma en que se realizan los envíos y entregas en Mar del Plata. Comenzamos con solo dos motocicletas y un sueño de brindar un servicio de mensajería excepcional.
+          </p>
+          <p class="text-gray-600 mb-4">
+            Desde entonces, hemos crecido constantemente, expandiendo nuestra flota y perfeccionando nuestros servicios para satisfacer las necesidades cambiantes de nuestros clientes, tanto particulares como empresas.
+          </p>
+          <p class="text-gray-600">
+            Hoy, somos reconocidos como una de las principales opciones de mensajería en Mar del Plata, con más de 1,000 envíos mensuales y una calificación de excelencia respaldada por nuestros clientes satisfechos.
+          </p>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center items-center" data-aos="fade-left">
+          <img 
+            src="/img/LogoEnviosDosRuedas.webp" 
+            alt="Fundación de Envios DosRuedas" 
+            class="rounded-lg shadow-lg w-full max-w-md h-auto"
+          />
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-md p-8 mb-16 max-w-5xl mx-auto" data-aos="fade-up">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Nuestros Valores</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 flex items-center justify-center rounded-full mx-auto mb-4">
+              <i class="fas fa-award text-2xl text-royal-blue"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Excelencia</h3>
+            <p class="text-gray-600">
+              Nos esforzamos por la excelencia en cada entrega, asegurando que cada paquete llegue a tiempo y en perfectas condiciones.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 flex items-center justify-center rounded-full mx-auto mb-4">
+              <i class="fas fa-handshake text-2xl text-royal-blue"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Confianza</h3>
+            <p class="text-gray-600">
+              Construimos relaciones duraderas basadas en la confianza y la transparencia con cada cliente y socio comercial.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 flex items-center justify-center rounded-full mx-auto mb-4">
+              <i class="fas fa-bolt text-2xl text-royal-blue"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Rapidez</h3>
+            <p class="text-gray-600">
+              Entendemos la importancia del tiempo, por eso nos comprometemos a realizar entregas rápidas y eficientes.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+        <div data-aos="fade-right">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Nuestro Equipo</h2>
+          <p class="text-gray-600 mb-4">
+            Detrás de Envios DosRuedas hay un equipo apasionado y comprometido de profesionales con experiencia en logística y atención al cliente. Nuestros cadetes están capacitados para brindar un servicio excepcional y resolver cualquier desafío en el camino.
+          </p>
+          <p class="text-gray-600">
+            Desde la planificación de rutas hasta la atención personalizada a cada cliente, trabajamos en conjunto para asegurar que cada envío sea una experiencia positiva y satisfactoria.
+          </p>
+        </div>
+        <div data-aos="fade-left">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Compromiso con la Comunidad</h2>
+          <p class="text-gray-600 mb-4">
+            Como empresa local, tenemos un fuerte compromiso con la comunidad de Mar del Plata. Participamos activamente en iniciativas locales y apoyamos a emprendedores de la zona con tarifas preferenciales y asesoramiento logístico.
+          </p>
+          <p class="text-gray-600">
+            Además, nos esforzamos por implementar prácticas sostenibles en nuestras operaciones diarias, minimizando nuestro impacto ambiental y contribuyendo a un futuro más verde para nuestra ciudad.
+          </p>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">¿Listo para probar nuestro servicio?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/cotizador-envios-express" class="btn-primary">
+            Cotizar envío
+            <i class="fas fa-calculator ml-2"></i>
+          </a>
+          <a href="/contacto" class="btn-secondary">
+            Contactarnos
+            <i class="fas fa-envelope ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-royal-blue text-white font-medium rounded-lg hover:bg-marian-blue transition duration-300 shadow;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-royal-blue border border-royal-blue font-medium rounded-lg hover:bg-gray-50 transition duration-300 shadow;
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import Head from '../components/Head.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+    title: string;
+    description: string;
+    canonicalUrl?: string;
+    image?: string;
+}
+
+const { 
+    title, 
+    description,
+    canonicalUrl,
+    image
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <Head 
+            title={title}
+            description={description}
+            canonicalUrl={canonicalUrl}
+            image={image}
+        >
+            <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+        </Head>
+    </head>
+    <body class="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+        <Navbar />
+        
+        <main class="flex-grow">
+            <slot />
+        </main>
+        
+        <Footer />
+
+        <!-- AOS Initialization -->
+        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script is:inline>
+            document.addEventListener('DOMContentLoaded', () => {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    mirror: false
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,192 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-royal-blue text-white pt-12 pb-4">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Logo y descripción -->
+      <div class="mb-6 md:mb-0">
+        <div class="flex flex-col items-center md:items-start">
+          <a href="/" class="mb-3 inline-block">
+            <img 
+              src="/LogoEnviosDosRuedas.webp" 
+              alt="Envios DosRuedas Logo" 
+              class="h-16 w-auto"
+              width="100"
+              height="100"
+            />
+          </a>
+          <h3 class="text-xl font-bold mb-2">Envios DosRuedas</h3>
+          <p class="text-gray-300 mb-4 text-sm">
+            Tu solución confiable para mensajería y delivery en Mar del Plata.
+          </p>
+          <div class="flex space-x-3 mt-2">
+            <a href="https://instagram.com/enviosdosruedas" class="text-white hover:text-mikado-yellow transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://facebook.com/enviosdosruedas" class="text-white hover:text-mikado-yellow transition-colors duration-200" aria-label="Facebook">
+              <i class="fab fa-facebook text-xl"></i>
+            </a>
+            <a href="https://wa.me/+542236602699?text=Hola!%20Encontre%20su%20contacto%20en%20el%20sitio%20web%20y%20me%20gustaria%20mas%20informacion%20sobre%20su%20servicio." class="text-white hover:text-mikado-yellow transition-colors duration-200" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menú -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-polynesian-blue pb-2">Menú</h4>
+        <ul class="space-y-2">
+          <li>
+            <a href="/" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-home w-5"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="/sobre-nosotros" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-building w-5"></i>
+              <span>Sobre Nosotros</span>
+            </a>
+          </li>
+          <li>
+            <a href="/contacto" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-envelope w-5"></i>
+              <span>Contacto</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preguntasfrecuentes" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-question-circle w-5"></i>
+              <span>Preguntas Frecuentes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Servicios -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-polynesian-blue pb-2">Servicios</h4>
+        <ul class="space-y-2">
+          <li>
+            <a href="/mensajeria-envios-express" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-shipping-fast w-5"></i>
+              <span>Envíos Express</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mensajeria-envios-lowcost" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-hand-holding-dollar w-5"></i>
+              <span>Envíos LowCost</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delivery-moto-express" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-motorcycle w-5"></i>
+              <span>Moto Express</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delivery-moto-fija" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-clock w-5"></i>
+              <span>Moto Fija</span>
+            </a>
+          </li>
+          <li>
+            <a href="/envios-emprendedores" class="text-gray-300 hover:text-mikado-yellow transition-colors duration-200 flex items-center">
+              <i class="fas fa-store w-5"></i>
+              <span>Plan Emprendedores</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-polynesian-blue pb-2">Contacto</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3 text-mikado-yellow"></i>
+            <span>Mar del Plata, Argentina</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-phone mr-3 text-mikado-yellow"></i>
+            <a href="tel:+542236602699" class="hover:text-mikado-yellow transition-colors duration-200">
+              +54 223 660 2699
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-envelope mr-3 text-mikado-yellow"></i>
+            <a href="mailto:dosruedasmdq@gmail.com" class="hover:text-mikado-yellow transition-colors duration-200">
+              dosruedasmdq@gmail.com
+            </a>
+          </li>
+          <li class="mt-4">
+            <a 
+              href="https://wa.me/+542236602699?text=Hola!%20Encontré%20su%20contacto%20en%20el%20sitio%20web%20y%20me%20gustaría%20más%20información%20sobre%20su%20servicio." 
+              class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors duration-200"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fab fa-whatsapp mr-2 text-lg"></i>
+              WhatsApp
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-4 border-t border-polynesian-blue text-center">
+      <p class="text-sm text-gray-400">
+        © {currentYear} Envíos DosRuedas. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button 
+    id="backToTopBtn" 
+    class="fixed bottom-6 right-6 p-2 bg-marian-blue text-white rounded-full shadow-md hover:bg-royal-blue transition-colors duration-200 opacity-0 invisible"
+    aria-label="Volver arriba"
+  >
+    <i class="fas fa-arrow-up text-lg"></i>
+  </button>
+</footer>
+
+<script>
+  // Back to top button functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0');
+          backToTopBtn.classList.remove('opacity-100');
+          setTimeout(() => {
+            if (window.scrollY <= 300) {
+              backToTopBtn.classList.add('invisible');
+            }
+          }, 200); // Tiempo de la transición
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+<style>
+  #backToTopBtn {
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 99;
+  }
+</style>

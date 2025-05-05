@@ -1,0 +1,213 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: 'fa-shipping-fast',
+    title: 'Envíos Rápidos y Seguros',
+    description: 'Agilizamos tus entregas para que tus productos lleguen a tiempo y en perfecto estado.'
+  },
+  {
+    icon: 'fa-hand-holding-usd',
+    title: 'Tarifas Competitivas',
+    description: 'Ofrecemos precios accesibles que se adaptan a tu presupuesto, sin sacrificar la calidad del servicio.'
+  },
+  {
+    icon: 'fa-boxes',
+    title: 'Logística Personalizada',
+    description: 'Adaptamos nuestros servicios a las necesidades específicas de tu negocio, desde el almacenamiento hasta la entrega.'
+  }
+];
+
+// Array de imágenes para el carrusel
+const carouselImages = [
+  {
+    src: "/Emprendedoresbanner.webp",
+    alt: "Emprendedor entregando paquete"
+  },
+  {
+    src: "/Emprendedoresbannerrapidas.webp",
+    alt: "Paquetes listos para entrega"
+  },
+  {
+    src: "/Emprendedoresbannerrapidas2.webp",
+    alt: "Delivery en motocicleta"
+  },
+  {
+    src: "/Emprendedoresbannerrapidas3.webp",
+    alt: "Delivery en motocicleta"
+  }
+];
+---
+
+<section class="py-12 md:py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 text-mikado-yellow">
+        Soluciones Especiales para Emprendedores
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Apoyamos a emprendedores con soluciones de mensajería y delivery confiables, rápidas y económicas.
+        Optimiza tu logística y dedica más tiempo a hacer crecer tu negocio.
+      </p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="max-w-4xl mx-auto mb-16 rounded-xl overflow-hidden shadow-xl">
+      <div id="emprendedores-carousel" class="relative">
+        <!-- Images will be populated by JavaScript -->
+        <div class="carousel-container relative h-64 md:h-80 lg:h-96 bg-gray-200">
+          {carouselImages.map((image, index) => (
+            <div class={`carousel-slide absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}>
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
+          
+          <!-- Controls -->
+          <button 
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-10"
+            id="prevBtn"
+            aria-label="Anterior"
+          >
+            <i class="fas fa-chevron-left text-royal-blue"></i>
+          </button>
+          <button 
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-10"
+            id="nextBtn"
+            aria-label="Siguiente"
+          >
+            <i class="fas fa-chevron-right text-royal-blue"></i>
+          </button>
+          
+          <!-- Indicators -->
+          <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+            {carouselImages.map((_, index) => (
+              <button 
+                class={`w-3 h-3 rounded-full ${index === 0 ? 'bg-mikado-yellow' : 'bg-white/60'} hover:bg-mikado-yellow transition-colors duration-200`}
+                data-index={index}
+                aria-label={`Ir a imagen ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      {features.map((feature) => (
+        <div 
+          class="bg-white rounded-lg shadow-md p-6 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+          data-aos="fade-up"
+          data-aos-delay={(features.indexOf(feature) * 100)}
+        >
+          <div class="mb-4 text-center">
+            <div class="inline-block p-3 rounded-full bg-royal-blue text-white">
+              <i class={`fas ${feature.icon} text-xl`}></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-royal-blue">{feature.title}</h3>
+          <p class="text-gray-600 text-center">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+    
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+      <a 
+        href="/envios-emprendedores" 
+        class="inline-flex items-center px-6 py-3 rounded-lg bg-royal-blue hover:bg-marian-blue text-white font-medium transition-colors duration-200 shadow-md"
+      >
+        Conocer más sobre nuestro plan para emprendedores
+        <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Emprendedores carousel functionality
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('[data-index]');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    // Auto-advance timer
+    let slideInterval = setInterval(nextSlide, 5000);
+    
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('opacity-100');
+        slide.classList.add('opacity-0');
+      });
+      
+      // Update indicators
+      indicators.forEach(indicator => {
+        indicator.classList.remove('bg-mikado-yellow');
+        indicator.classList.add('bg-white/60');
+      });
+      
+      // Show current slide
+      slides[index].classList.remove('opacity-0');
+      slides[index].classList.add('opacity-100');
+      
+      // Update current indicator
+      indicators[index].classList.remove('bg-white/60');
+      indicators[index].classList.add('bg-mikado-yellow');
+      
+      // Update currentIndex
+      currentIndex = index;
+      
+      // Reset interval
+      resetInterval();
+    }
+    
+    function nextSlide() {
+      let nextIndex = currentIndex + 1;
+      if (nextIndex >= totalSlides) nextIndex = 0;
+      showSlide(nextIndex);
+    }
+    
+    function prevSlide() {
+      let prevIndex = currentIndex - 1;
+      if (prevIndex < 0) prevIndex = totalSlides - 1;
+      showSlide(prevIndex);
+    }
+    
+    // Event Listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Indicator clicks
+    indicators.forEach(indicator => {
+      indicator.addEventListener('click', () => {
+        const index = parseInt(indicator.getAttribute('data-index') || '0');
+        showSlide(index);
+      });
+    });
+    
+    // Initialize first slide
+    showSlide(0);
+  });
+</script>

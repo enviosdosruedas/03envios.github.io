@@ -1,0 +1,78 @@
+---
+const socialLinks = [
+  {
+    platform: 'instagram',
+    url: 'https://www.instagram.com/enviosdosruedas/',
+    icon: 'fa-instagram',
+    text: '¡Síguenos en Instagram!',
+    bgColor: 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'
+  },
+  {
+    platform: 'facebook',
+    url: 'https://www.facebook.com/enviosdosruedas',
+    icon: 'fa-facebook',
+    text: '¡Visítanos en Facebook!',
+    bgColor: 'bg-blue-600'
+  },
+  {
+    platform: 'whatsapp',
+    url: 'https://wa.me/+542236602699?text=Hola!%20Encontre%20su%20contacto%20en%20el%20sitio%20web%20y%20me%20gustaria%20mas%20informacion%20sobre%20su%20servicio.',
+    icon: 'fa-whatsapp',
+    text: 'WhatsApp: 2236602699',
+    bgColor: 'bg-green-600'
+  }
+];
+---
+
+<section class="py-4 overflow-hidden">
+  <div class="social-banner-container">
+    <div class="social-carousel flex animate-slide">
+      {[...socialLinks, ...socialLinks].map((social, index) => (
+        <a 
+          href={social.url}
+          target="_blank" 
+          rel="noopener noreferrer"
+          class={`social-item flex items-center justify-center ${social.bgColor} text-white px-6 py-3 mx-2 rounded-lg transition-transform duration-300 hover:scale-105`}
+          aria-label={`Visitar ${social.platform}`}
+        >
+          <i class={`fab ${social.icon} text-xl mr-2`}></i>
+          <span class="font-medium">{social.text}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-banner-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .social-carousel {
+    display: flex;
+    width: max-content;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-slide {
+    animation: slide 20s linear infinite;
+  }
+
+  .social-item:hover {
+    animation-play-state: paused;
+  }
+
+  /* Pause animation when user hovers over container */
+  .social-banner-container:hover .animate-slide {
+    animation-play-state: paused;
+  }
+</style>

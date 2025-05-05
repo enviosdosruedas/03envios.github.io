@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Contacto - Envios DosRuedas | Mensajería y Delivery en Mar del Plata";
+const description = "Contáctanos para solicitar servicios de mensajería y delivery en Mar del Plata. Atención personalizada y respuesta rápida para todas tus consultas.";
+---
+
+<Layout title={title} description={description}>
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="md:flex">
+          <div class="md:flex-1 p-8 bg-gradient-to-br from-royal-blue via-marian-blue to-polynesian-blue text-white">
+            <h1 class="text-3xl font-bold mb-6">Contacto</h1>
+            <p class="mb-8">Estamos aquí para ayudarte. Completa el formulario o comunícate a través de nuestros canales de atención directa.</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="mr-4 mt-1 bg-white/10 p-2 rounded-lg">
+                  <i class="fas fa-map-marker-alt text-mikado-yellow"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">Ubicación</h3>
+                  <p>Mar del Plata, Buenos Aires, Argentina</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="mr-4 mt-1 bg-white/10 p-2 rounded-lg">
+                  <i class="fas fa-phone text-mikado-yellow"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">Teléfono</h3>
+                  <p>+54 223 660 2699</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="mr-4 mt-1 bg-white/10 p-2 rounded-lg">
+                  <i class="fas fa-envelope text-mikado-yellow"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">Email</h3>
+                  <p>dosruedasmdq@gmail.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="mr-4 mt-1 bg-white/10 p-2 rounded-lg">
+                  <i class="fas fa-clock text-mikado-yellow"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">Horario de atención</h3>
+                  <p>Lunes a Viernes: 09:00 - 18:00</p>
+                  <p>Sábados: 09:00 - 15:00</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-10">
+              <h3 class="text-lg font-semibold mb-4">Síguenos en redes sociales</h3>
+              <div class="flex space-x-4">
+                <a href="https://instagram.com/enviosdosruedas" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition duration-300">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/enviosdosruedas" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition duration-300">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/+542236602699" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition duration-300">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:flex-1 p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Envíanos un mensaje</h2>
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+                <input type="text" id="name" name="name" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+              </div>
+              
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                <input type="tel" id="phone" name="phone" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+                <select id="subject" name="subject" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                  <option value="consulta">Consulta general</option>
+                  <option value="cotizacion">Solicitar cotización</option>
+                  <option value="reclamo">Reclamo</option>
+                  <option value="sugerencia">Sugerencia</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                <textarea id="message" name="message" rows="4" required
+                          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+              </div>
+              
+              <button type="submit" 
+                      class="w-full bg-royal-blue hover:bg-marian-blue text-white font-medium py-3 px-4 rounded-md transition duration-300">
+                Enviar mensaje
+              </button>
+            </form>
+            
+            <div id="formSuccess" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-md">
+              ¡Gracias por tu mensaje! Nos pondremos en contacto contigo lo antes posible.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    
+    if (form && formSuccess) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Aquí iría la lógica para enviar el formulario
+        // Simulamos el envío exitoso
+        formSuccess.classList.remove('hidden');
+        form.reset();
+        
+        // Ocultamos el mensaje después de 5 segundos
+        setTimeout(() => {
+          formSuccess.classList.add('hidden');
+        }, 5000);
+      });
+    }
+  });
+</script>
