@@ -1,5 +1,9 @@
 ---
 const currentYear = new Date().getFullYear();
+// Import Swiper if you're using it in this component
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
 ---
 
 <footer class="bg-royal-blue text-white pt-12 pb-4">
@@ -156,6 +160,9 @@ const currentYear = new Date().getFullYear();
   </button>
 </footer>
 
+<!-- Load Swiper JS -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Objeto de utilidades para funciones comunes
@@ -224,10 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (mobileToggle && navMenu) {
             utils.addSafeEventListener(mobileToggle, 'click', () => {
-                utils.toggleClass(mobileToggle, 'active');
-                utils.toggleClass(navMenu, 'active');
-                utils.toggleClass(navOverlay, 'active');
-                utils.toggleClass(document.body, 'no-scroll');
+                utils.toggleClass(mobileToggle, 'active', true);
+                utils.toggleClass(navMenu, 'active', true);
+                utils.toggleClass(navOverlay, 'active', true);
+                utils.toggleClass(document.body, 'no-scroll', true);
             });
 
             utils.addSafeEventListener(navOverlay, 'click', () => {
@@ -243,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 utils.addSafeEventListener(trigger, 'click', (e) => {
                     if (window.innerWidth <= 768) {
                         e.preventDefault();
-                        utils.toggleClass(dropdown, 'active');
+                        utils.toggleClass(dropdown, 'active', true);
                     }
                 });
             });
@@ -252,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar Swiper para la sección de emprendedores
     const initSwiper = () => {
-        if (document.querySelector('.mySwiper')) {
+        if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
             new Swiper(".mySwiper", {
                 slidesPerView: 1,
                 spaceBetween: 30,
