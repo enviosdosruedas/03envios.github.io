@@ -139,7 +139,7 @@ const description = "Contáctanos para solicitar servicios de mensajería y deli
         // Aquí iría la lógica para enviar el formulario
         // Simulamos el envío exitoso
         formSuccess.classList.remove('hidden');
-        form.reset();
+(form as HTMLFormElement).reset();
         
         // Ocultamos el mensaje después de 5 segundos
         setTimeout(() => {

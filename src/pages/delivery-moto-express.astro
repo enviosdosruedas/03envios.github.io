@@ -1,15 +1,21 @@
 ---
-title: "Basic Page"
-description: "This is a basic page generated automatically."
+import Layout from '../layouts/Layout.astro';
+
+// SEO
+const title = "Delivery Moto Express - Envios DosRuedas";
+const description = "Servicio de delivery express en moto para Mar del Plata. Entregas rápidas y seguras para tus envíos urgentes.";
 ---
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>{title}</title>
-    <meta name="description" content={description} />
-  </head>
-  <body>
-    <h1>Hello, Astro!</h1>
-    <p> This is a basic page generated automatically. </p>
-  </body>
-</html>
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <!-- Your page content here -->
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-primary-800 mb-6">Delivery Moto Express</h1>
+    <p class="text-lg text-gray-700">
+      Nuestro servicio de delivery express en moto garantiza entregas rápidas y seguras en toda la ciudad de Mar del Plata.
+    </p>
+    <!-- Add more content as needed -->
+  </div>
+</Layout>
