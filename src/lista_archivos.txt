@@ -1,0 +1,32 @@
+Archivos en la carpeta sections:
+============================
+
+1. banner-redes-sociales.tsx
+2. BusquedaFaq.tsx
+3. CompromisoEmprendedores.tsx
+4. cotizar-principal.tsx
+5. CotizarEnviosExpresForm.tsx
+6. EmprendedorContacto.tsx
+7. emprendedores-principal.tsx
+8. ExpressPrioritario.tsx
+9. faqmenenvexpress.tsx
+10. hero-section.tsx
+11. HeroContacto.tsx
+12. HeroEmprendedores.tsx
+13. HeroFaq.tsx
+14. HeroMenEnvExpress.tsx
+15. HeroNosotros.tsx
+16. HeroNuestrasRedes.tsx
+17. InfoContacto.tsx
+18. InfoEmprendedores.tsx
+19. ListoEmprendedores.tsx
+20. MasPreguntas.tsx
+21. PasosServicios.tsx
+22. PrecioEmprendedores.tsx
+23. Principalcontacto.tsx
+24. RecomendacionesEmprendedores.tsx
+25. Resumenmensajeriaenviosexpress.tsx
+26. service-overview.tsx
+27. servicios-destacados.tsx
+28. vision-global.tsx
+29. ZonadeCobertura.tsx
